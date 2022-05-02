@@ -1,0 +1,37 @@
+[package]
+name = "encryptor"
+version = "0.0.1"
+edition = "2021"
+description ="Implementation of Poseidon Encryption over the Bls12-381 Scalar field."
+repository = ""
+license = "Apache-2.0"
+
+
+[dependencies]
+hex = "0.4.3"
+sha3 = {version = "0.10.0", default-features = false}
+dusk-bls12_381 = {version = "0.9", default-features = false}
+dusk-jubjub = {version = "0.11", default-features = false}
+dusk-bytes = "0.1"
+canonical = {version = "0.7.0", optional = true}
+canonical_derive = {version = "0.7", optional = true}
+rand_core = {version="0.6", default-features=false}
+dusk-hades = "0.18.0-rc"
+
+[dev-dependencies]
+criterion = "0.3"
+
+[features]
+default = ["std", "canon"]
+alloc = []
+std = [
+  "dusk-bls12_381/default",
+  "dusk-jubjub/std",
+]
+canon = [
+  "dusk-bls12_381/canon",
+  "dusk-jubjub/canon",
+  "canonical",
+  "canonical_derive",
+  "alloc"
+]
