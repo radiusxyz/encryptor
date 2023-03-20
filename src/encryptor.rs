@@ -9,7 +9,7 @@ use sha3::{Digest, Keccak256};
 use std::convert::TryInto;
 use std::{u64, usize};
 
-const MESSAGE_CAPACITY: usize = 2;
+const MESSAGE_CAPACITY: usize = 10;
 const CIPHER_SIZE: usize = MESSAGE_CAPACITY + 1;
 const CIPHER_BYTES_SIZE: usize = CIPHER_SIZE * BlsScalar::SIZE;
 
