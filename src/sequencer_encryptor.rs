@@ -42,7 +42,7 @@ impl SequencerPoseidonEncryption {
     ]
   }
 
-  fn to_bytes(cipher_text: [BlsScalar; CIPHER_SIZE]) -> [u8; CIPHER_BYTES_SIZE] {
+  pub fn to_bytes(cipher_text: [BlsScalar; CIPHER_SIZE]) -> [u8; CIPHER_BYTES_SIZE] {
     let mut bytes = [0u8; CIPHER_BYTES_SIZE];
 
     cipher_text.iter().enumerate().for_each(|(i, c)| {
