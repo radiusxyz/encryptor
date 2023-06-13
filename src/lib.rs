@@ -1,7 +1,7 @@
 mod bls_scalar_info;
-mod encryptor;
+mod threesixty_encryptor;
 mod sequencer_encryptor;
 
 pub use bls_scalar_info::BlsScalarInfo;
-pub use encryptor::PoseidonEncryption;
+pub use threesixty_encryptor::PoseidonEncryption;
 pub use sequencer_encryptor::SequencerPoseidonEncryption;
