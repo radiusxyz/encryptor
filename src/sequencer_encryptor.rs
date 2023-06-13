@@ -15,36 +15,19 @@ const CIPHER_BYTES_SIZE: usize = CIPHER_SIZE * BlsScalar::SIZE;
 
 /// Encapsulates an encrypted data
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Ord, PartialOrd, Default)]
-pub struct SequencerPoseidonEncryption {
-  message_capacity: usize,
-  cipher_size: usize
-}
+pub struct SequencerPoseidonEncryption {}
 
 impl SequencerPoseidonEncryption {
   pub const fn new() -> Self {
-    Self {
-      message_capacity: MESSAGE_CAPACITY,
-      cipher_size: CIPHER_SIZE
-    }
-  }
-
-  pub const fn new_with_size(message_capacity: usize) -> Self {
-    Self {
-      message_capacity,
-      cipher_size: message_capacity + 1
-    }
+    Self {}
   }
 
   pub const fn capacity() -> usize {
-    self.message_capacity
+    MESSAGE_CAPACITY
   }
 
   pub const fn cipher_size() -> usize {
     CIPHER_SIZE
-  }
-
-  pub const fn slice_message_vec(target_size: usize, message: [BlsScalar; _]) -> &[BlsScalar; target_size] {
-    return &message[0..target_size]
   }
 
   fn initial_state(secret: &JubJubAffine, nonce: BlsScalar) -> [BlsScalar; dusk_hades::WIDTH] {
