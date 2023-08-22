@@ -9,7 +9,7 @@ use sha3::{Digest, Keccak256};
 use std::convert::TryInto;
 use std::{u64, usize};
 
-const MESSAGE_CAPACITY: usize = 10;
+const MESSAGE_CAPACITY: usize = 15;
 const CIPHER_SIZE: usize = MESSAGE_CAPACITY + 1;
 const CIPHER_BYTES_SIZE: usize = CIPHER_SIZE * BlsScalar::SIZE;
 
@@ -84,7 +84,7 @@ impl SequencerPoseidonEncryption {
     for (_, message_vec) in message_vecs.iter_mut().enumerate() {
       let byte_length = message_vec.capacity();
       message_vec.resize(32, 0);
-      
+
       let temp = &*message_vec;
       let message: [u8; 32] = temp.as_slice().try_into().unwrap();
 
