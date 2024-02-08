@@ -78,13 +78,13 @@ impl PoseidonEncryption {
   }
 
   pub fn get_message_bls_scalar_vector(&self, message_bytes: &[u8]) -> [BlsScalar; PoseidonEncryption::capacity()] {
-    let mut message_vecs: Vec<Vec<u8>> = message_bytes.to_vec().chunks(32).map(|s| s.into()).collect();
+    let mut message_vecs: Vec<Vec<u8>> = message_bytes.to_vec().chunks(31).map(|s| s.into()).collect();
     let mut bls_scalars = Vec::new();
 
     for (_, message_vec) in message_vecs.iter_mut().enumerate() {
       let byte_length = message_vec.capacity();
       message_vec.resize(32, 0);
-      
+
       let temp = &*message_vec;
       let message: [u8; 32] = temp.as_slice().try_into().unwrap();
 
