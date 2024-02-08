@@ -186,6 +186,14 @@ impl SequencerPoseidonEncryption {
       message.extend_from_slice(&bls_scalar.to_bytes());
     }
 
+    // Remove scalar padding and maintain array size
+    for i in (31..message.len()).rev() {
+      if (i - 31) % 32 == 0 && message[i] == 0 {
+        let pad = message.remove(i);
+        message.push(pad);
+      }
+    }
+
     message.try_into().unwrap()
   }
 }
